@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=24
 #SBATCH --time=0-3:00:00
 #SBATCH --mem=200M
-#SBATCH --account= bisc035324
+#SBATCH --account=bisc035324
 #SBATCH --array 1-25 # CHANGED
 #SBATCH --mail-user=os25298@bristol.ac.uk
 #SBATCH --mail-type=ALL
