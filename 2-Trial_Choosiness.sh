@@ -2,11 +2,11 @@
 
 #SBATCH --job-name=Trial_Choosiness # CHANGED
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=24
-#SBATCH --time=0-3:00:00
-#SBATCH --mem=200M
+#SBATCH --ntasks-per-node=1 # CHANGED
+#SBATCH --time=1-0:00:00 # CHANGED
+#SBATCH --mem=2G # CHANGED
 #SBATCH --account=bisc035324
-#SBATCH --array 1-25 # CHANGED
+#SBATCH --array=1-25 # CHANGED
 #SBATCH --mail-user=os25298@bristol.ac.uk
 #SBATCH --mail-type=ALL
 
