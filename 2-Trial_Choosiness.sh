@@ -47,7 +47,7 @@ sed -i "s/SIMID_FROM_BLUEPEBBLE_ARRAY_JOB/${SimID}/g" Trial_Choosiness_model_for
 module load apps/matlab/r2023b
 
 # Run this simulation in MATLAB on BluePebble:
-matlab -nodisplay -nodesktop -nosplash < Trial_Choosiness_model_for_HPC_${SimID}.m
+matlab -batch "Trial_Choosiness_model_for_HPC_${SimID}"  # CHANGED
 
 # --------------------------------------------------------------------------------------------
 # MOVE THE RESULTS TO THE RESULTS FOLDER:
