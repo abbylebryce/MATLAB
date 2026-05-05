@@ -28,10 +28,10 @@ SimID=${SLURM_ARRAY_TASK_ID}
 # CREATE A MATLAB SCRIPT FOR THIS SPECIFIC SIMULATION RUN:
 
 # Set working directory to the main Trial_Choosiness_Simulation folder: #NOTE: need to create
-cd /user/work/os25298/2-Trial_Choosiness_Simulation/ 
+cd /user/work/os25298/2-Trial_Choosiness_Simulation/scripts 
 
 # Create a new MATLAB script, using the standard 'Trial_Choosiness_model_for_HPC.m' script that we have already uploaded:
-cp /user/work/os25298/2-Trial_Choosiness_Simulation/Trial_Choosiness_model_for_HPC.m Trial_Choosiness_model_for_HPC_${SimID}.m 
+cp Trial_Choosiness_model_for_HPC.m Trial_Choosiness_model_for_HPC_${SimID}.m
 
 # --------------------------------------------------------------------------------------------
 # FIND THE CLUTCH SIZE AND PROPORTION VALUE IN THIS SIMULATION RUN:  #CHANGED ALL BELOW BRINKMANSHIP TO TRIAL_CHOOSINESS
@@ -39,6 +39,16 @@ cp /user/work/os25298/2-Trial_Choosiness_Simulation/Trial_Choosiness_model_for_H
 # Insert the SimID  into the MATLAB (.m) script file:
 sed -i "s/SIMID_FROM_BLUEPEBBLE_ARRAY_JOB/${SimID}/g" Trial_Choosiness_model_for_HPC_${SimID}.m
 # This is then used within the MATLAB script to find the value for clutch size and proportion of HQ/LQ.
+
+# --------------------------------------------------------------------------------------------
+# MOVE THE RESULTS TO THE RESULTS FOLDER:
+
+# The MATLAB script produces a MAT file containing the output variables, called 'MATLAB_Trial_Choosiness_Output_${SimID}.m'. 
+
+# Ensure output directory exists (safe even if already created)
+mkdir -p /user/work/os25298/2-Trial_Choosiness_Simulation/output
+
+# MATLAB then automatically saves them there
 
 # --------------------------------------------------------------------------------------------
 # INITIALISE THIS SIMULATION RUN:
@@ -50,14 +60,6 @@ module load apps/matlab/r2023b
 matlab -batch "Trial_Choosiness_model_for_HPC_${SimID}"  # CHANGED
 
 # --------------------------------------------------------------------------------------------
-# MOVE THE RESULTS TO THE RESULTS FOLDER:
-
-# The MATLAB script produces a MAT file containing the output variables, called 'MATLAB_Trial_Choosiness_Output_${SimID}.m'. 
-
-# Ensure output directory exists (safe even if already created)
-mkdir -p /user/work/os25298/2-Trial_Choosiness_Simulation/output
-
-# MATLAB then automatically saves them there
 
 # Now that this specific simulation run has completed, delete its corresponding MATLAB script from BluePebble:
 rm Trial_Choosiness_model_for_HPC_${SimID}.m
