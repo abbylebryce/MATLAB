@@ -28,10 +28,10 @@ SimID=${SLURM_ARRAY_TASK_ID}
 # CREATE A MATLAB SCRIPT FOR THIS SPECIFIC SIMULATION RUN:
 
 # Set working directory to the main Trial_Choosiness_Simulation folder: #NOTE: need to create
-cd /user/work/os25298/Trial_Choosiness_Simulation/ 
+cd /user/work/os25298/2-Trial_Choosiness_Simulation/ 
 
 # Create a new MATLAB script, using the standard 'Trial_Choosiness_model_for_HPC.m' script that we have already uploaded:
-cp /user/work/os25298/Trial_Choosiness_Simulation/Trial_Choosiness_model_for_HPC.m Trial_Choosiness_model_for_HPC_${SimID}.m 
+cp /user/work/os25298/2-Trial_Choosiness_Simulation/Trial_Choosiness_model_for_HPC.m Trial_Choosiness_model_for_HPC_${SimID}.m 
 
 # --------------------------------------------------------------------------------------------
 # FIND THE CLUTCH SIZE AND PROPORTION VALUE IN THIS SIMULATION RUN:  #CHANGED ALL BELOW BRINKMANSHIP TO TRIAL_CHOOSINESS
@@ -55,7 +55,7 @@ matlab -batch "Trial_Choosiness_model_for_HPC_${SimID}"  # CHANGED
 # The MATLAB script produces a MAT file containing the output variables, called 'MATLAB_Trial_Choosiness_Output_${SimID}.m'. 
 
 # Ensure output directory exists (safe even if already created)
-mkdir -p /user/work/os25298/Trial_Choosiness_Simulation/output
+mkdir -p /user/work/os25298/2-Trial_Choosiness_Simulation/output
 
 # MATLAB then automatically saves them there
 
